@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Food>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Show Food Items";
+}
+
+@Html.ActionLink("Add Food Item", "CreateShowFoodItem", "AdminModule", new { id = ViewBag.Menu?.RestaurentId }, new { @class = "btn btn-primary" })
+
+<style>
+    .img-fluid {
+        max-width: 40%;
+        height: 70%;
+        margin-left: 200px;
+    }
+</style>
+
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-fluid rounded mb-3 mb-md-0" src=@item.FoodImage alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>@item.FoodName</h3>
+                <h6>@item.FoodDescription</h6>
+                <h3>Rs. @item.FoodUnitPrice </h3>
+                @Html.ActionLink("Details", "DetailsShowFoodItem", "AdminModule", new { id = item.FoodId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Edit", "EditShowFoodItem", "AdminModule", new { id = item.FoodId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Delete", "DeleteShowFoodItem", "AdminModule", new { id = item.FoodId }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+        <hr>
+    }
+</div>
+
+@Html.ActionLink("Back to Food Items", "Index", "AdminModule", new { id = ViewBag.Menu?.RestaurentId }, new { @class = "btn btn-info" })

@@ -1,0 +1,73 @@
+﻿@model List<Address>
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Show Address";
+}
+
+<h2>Your Saved Addresses</h2>
+
+<style>
+
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    h2 {
+        color: tomato;
+    }
+
+    .p{
+        color: tomato;
+    }
+
+    .Total {
+        color: tomato;
+        margin-left: 45em;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+        .btn-primary:hover {
+            background-color: tomato;
+            border-color: tomato;
+        }
+</style>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>Phone Number</th>
+            <th>Address</th>
+        </tr>
+
+        @foreach (var address in Model)
+        {
+            <tr>
+                <td>@address.MobileNo</td>
+                <td>@address.AddAddress</td>
+            </tr>
+        }
+    </table>
+
+    <center>
+        <div class="text-right">
+            @Html.ActionLink("Place Order", "OrderSuccess", "CustomerMenus", null, new { @class = "btn btn-primary" })
+        </div>
+    </center>
+
+
+}
+else
+{
+    <p>You haven't added any addresses yet. Please add an address.</p>
+}
+

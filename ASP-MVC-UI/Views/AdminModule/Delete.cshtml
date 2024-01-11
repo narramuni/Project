@@ -1,0 +1,87 @@
+﻿@model ASP_MVC_UI.Restaurant
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete Restaurant</h2>
+
+<div>
+    <h2>Restaurant Information</h2>
+    <hr />
+
+    <style>
+        h2, h3 {
+            margin-left: 400px;
+            color: tomato;
+        }
+
+        body {
+            background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dl-horizontal {
+            font-size: 15px;
+            align-content: center;
+            width: 600px;
+            height: 550px;
+            background-color: lemonchiffon;
+            color: black;
+            box-sizing: border-box;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 0 auto; /* Center the container */
+            margin-top: 20px; /* Add margin to the top */
+        }
+
+        .button {
+            color: tomato;
+        }
+
+        .delete {
+            padding: 7px 13px 8px 10px;
+            background-color: tomato;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <center>
+        <div class="dl-horizontal">
+            <hr />
+            <dt>Restaurant ID</dt>
+            <dd>@Model.RestaurentId</dd>
+            <br />
+            <hr />
+            <dt>Restaurant Name</dt>
+            <dd>@Model.RestaurentName</dd>
+            <br />
+            <hr />
+            <dt>Available</dt>
+            <dd>@(Model.RestaurentAvailable ? "Yes" : "No")</dd>
+            <br />
+            <hr />
+            <dt>Logo URL</dt>
+            <dd>@Model.RestaurentLogoUrl</dd>
+            <br />
+            <hr />
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger delete" /> |
+                @Html.ActionLink("Back to Restaurants Page", "Index", null, new { @class = "btn btn-success" })
+            </div>
+        }
+
+
+
+    </center>
+</div>

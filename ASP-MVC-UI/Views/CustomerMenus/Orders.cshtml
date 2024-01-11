@@ -1,0 +1,124 @@
+﻿@model List<Cart>
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Shopping Cart";
+}
+
+<h2>Your Orders</h2>
+
+<style>
+
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    h2{
+        color:tomato;
+
+    }
+    .Total{
+        color: tomato;
+        margin-left: 45em;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+        .btn-primary:hover {
+            background-color: tomato;
+            border-color: tomato;
+        }
+</style>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Food Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CartFoodName</td>
+                <td>@item.CartFoodQty</td>
+                <td>@item.CartFoodPrice</td>
+                <td>@(item.CartFoodQty * item.CartFoodPrice)</td>
+
+            </tr>
+
+        }
+    </table>
+
+    <div>
+        <label for="couponDropdown">Applicable Coupons to Your Cart:</label>
+        <select id="couponDropdown">
+            <option value="EndOfYear">End of Year (10% off)</option>
+            <option value="Christmas">Christmas (5% off)</option>
+            <option value="DeliciousFood">Delicious Food (50 rupees off)</option>
+        </select>
+        <button id="applyCouponBtn">Apply Coupon</button>
+    </div>
+
+    <div class="Total">Total Amount: <span id="totalAmount">@Model.Sum(item => item.CartFoodQty * item.CartFoodPrice)</span></div>
+
+    <center>
+        <div class="text-right">
+            @Html.ActionLink("Add Address", "AddAddress", "CustomerMenus", null, new { @class = "btn btn-primary" })
+        </div>
+        <br />
+        <div class="text-right">
+            @Html.ActionLink("Go back to Cart", "ShowCart", "CustomerMenus", null, new { @class = "btn btn-primary" })
+        </div>
+    </center>
+}
+else
+{
+    <p>Your shopping cart is empty.</p>
+}
+
+<head>
+    <!-- Add this line to include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Other head elements... -->
+</head>
+
+
+<script>
+    $(document).ready(function () {
+        var originalTotalAmount = parseFloat($("#totalAmount").text());
+
+        $("#applyCouponBtn").on("click", function () {
+            var selectedCoupon = $("#couponDropdown").val();
+            var totalAmount = originalTotalAmount; // Reset to the original total amount
+
+            switch (selectedCoupon) {
+                case "EndOfYear":
+                    totalAmount -= totalAmount * 0.1;
+                    break;
+                case "Christmas":
+                    totalAmount -= totalAmount * 0.05;
+                    break;
+                case "DeliciousFood":
+                    totalAmount -= 50;
+                    break;
+                // Add more cases for additional coupons if needed
+            }
+
+            $("#totalAmount").text(totalAmount.toFixed(2));
+        });
+    });
+</script>

@@ -1,0 +1,67 @@
+﻿@model ASP_MVC_UI.Cart
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CartFoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CartFoodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CartFoodQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CartFoodQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CartFoodPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CartFoodPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CartFoodImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CartFoodImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Food.FoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Food.FoodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CartId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

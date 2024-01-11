@@ -1,0 +1,146 @@
+﻿@model ASP_MVC_UI.Customer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<style>
+    h2, h3 {
+        color: tomato;
+        text-underline-offset: auto;
+        margin-left: 100px;
+    }
+
+    h4 {
+        border-radius: 6px;
+        margin: 0;
+        padding: 10px;
+        color: tomato;
+    }
+
+    body {
+        background-image: url('/Pictures/ShopMoreOrGoToCartBgImg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .form-horizontal {
+        font-size: 15px;
+        align-content: center;
+        width: 600px;
+        height: 600px;
+        background-color: peachpuff;
+        color: black;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .form-group {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .create {
+        padding: 8px 10px;
+        border: none;
+        margin-top: 4px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 20px;
+        align-content: center;
+        background-color: tomato;
+        border-radius: 3px 4px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn-warning {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-bottom: 100px;
+    }
+
+        .btn-warning:hover {
+            background-color: tomato;
+            border-color: #d58512;
+        }
+</style>
+
+
+<center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Create Customer</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustPhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustPhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustFName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustFName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustFName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustLName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustLName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustLName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="create" type="submit">create</button>
+
+                </div>
+            </div>
+        </div>
+    }
+</center>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning" })
+</div>

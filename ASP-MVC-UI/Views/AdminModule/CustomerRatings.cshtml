@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ASP_MVC_UI.CustomerRating>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Show Food Items";
+}
+
+<style>
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .customer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .customer-box {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 10px;
+        width: 400px;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .customer-box:hover {
+            border-color: #ff9800;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+    .customer-info {
+        margin-top: 10px;
+        color: #555;
+    }
+
+    .star {
+        color: #FFD700;
+        font-size: 30px;
+    }
+
+    .btn-warning {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+</style>
+
+<div class="customer-container">
+    @foreach (var item in Model)
+    {
+        <div class="customer-box">
+            <div class="customer-info">
+                <strong>Customer Full Name:</strong> @Html.DisplayFor(modelItem => item.Customer.CustFName)
+            </div>
+            <div class="customer-info">
+                <strong>Email Adresss:</strong> @Html.DisplayFor(modelItem => item.Customer.CustEmail)
+            </div>
+            <div class="customer-info">
+                <strong>Rating:</strong>
+                @for (int i = 0; i < item.RatingNumber; i++)
+                {
+                    <span class="star">&#9733;</span>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to Admin Index", "Index", "AdminModule", null, new { @class = "btn btn-warning" })
+</div>

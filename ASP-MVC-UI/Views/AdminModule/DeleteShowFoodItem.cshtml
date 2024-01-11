@@ -1,0 +1,114 @@
+﻿@model Food
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Food Details";
+}
+
+<style>
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .details-container {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        color: black;
+        width: 60%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .details-container:hover {
+            background-color: #f0f0f0;
+        }
+
+    h2 {
+        color: tomato;
+    }
+
+    .card {
+        border: 1px solid #4c88bf;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+    }
+
+    .card-title {
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: #4c88bf;
+    }
+
+        .btn-primary:hover {
+            border-color: tomato;
+        }
+
+    .table {
+        border: 1px solid #4c88bf;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+        background-color: #ffffff;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    th, td {
+        color: black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .details-container-wrapper {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<center>
+    <div class="details-container">
+        <div class="dl-horizontal">
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.FoodName)</dt>
+            <dd>@Html.DisplayFor(model => model.FoodName)</dd>
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.FoodQty)</dt>
+            <dd>@Html.DisplayFor(model => model.FoodQty)</dd>
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.FoodUnitPrice)</dt>
+            <dd>@Html.DisplayFor(model => model.FoodUnitPrice)</dd>
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.FoodDescription)</dt>
+            <dd>@Html.DisplayFor(model => model.FoodDescription)</dd>
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.FoodImage)</dt>
+            <dd>@Html.DisplayFor(model => model.FoodImage)</dd>
+            <hr />
+            <dt>@Html.DisplayNameFor(model => model.Restaurant.RestaurentName)</dt>
+            <dd>@Html.DisplayFor(model => model.Restaurant.RestaurentName)</dd>
+            <hr />
+        </div>
+    </div>
+
+    <div class="details-container-wrapper">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger delete" /> |
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+            </div>
+        }
+    </div>
+</center>

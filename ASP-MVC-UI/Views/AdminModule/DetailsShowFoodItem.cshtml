@@ -1,0 +1,105 @@
+﻿@model Food
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Food Details";
+}
+
+<style>
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .details-container {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        color: black;
+        
+        width: 60%; 
+        max-width: 800px; 
+        margin: 0 auto; 
+    }
+
+        .details-container:hover {
+            background-color: #f0f0f0;
+        }
+
+    h2 {
+        color: tomato;
+    }
+
+    .card {
+        border: 1px solid #4c88bf;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+    }
+
+    .card-title {
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: #4c88bf;
+    }
+
+        .btn-primary:hover {
+            border-color: tomato;
+        }
+
+    .table {
+       
+        border: 1px solid #4c88bf;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+        background-color: #ffffff;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    th, td {
+        
+        color: black;
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
+<div class="details-container">
+    <h2 class="text-center mb-4">Food Details</h2>
+
+    <table class="table">
+        <tr>
+            <th>Food Name</th>
+            <td>@Html.DisplayFor(model => model.FoodName)</td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td>@Html.DisplayFor(model => model.FoodQty)</td>
+        </tr>
+        <tr>
+            <th>Unit Price</th>
+            <td>@Html.DisplayFor(model => model.FoodUnitPrice)</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@Html.DisplayFor(model => model.FoodDescription)</td>
+        </tr>
+        <!-- Add other fields as needed -->
+    </table>
+
+    <div class="text-center">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default", style = "background-color: tomato; border-color: tomato; color: white;" })
+    </div>
+
+
+
+</div>

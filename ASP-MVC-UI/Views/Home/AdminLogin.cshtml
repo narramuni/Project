@@ -1,0 +1,134 @@
+﻿@model ASP_MVC_UI.Admin
+
+@{
+    ViewBag.Title = "AdminLogin";
+}
+<h2>AdminLogin</h2>
+<br />
+
+<style>
+    h2 {
+        text-align: center;
+        color: white;
+        text-underline-offset: auto;
+        background-color: tomato;
+    }
+
+    h4 {
+        border-radius: 6px;
+        margin: 0;
+        padding: 10px;
+        font-weight: bold;
+        color: tomato;
+    }
+
+    body {
+        background-image: url('/Pictures/pexels-photo-1640773.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .form-horizontal {
+        font-size: 12px;
+        align-content: center;
+        width: 400px;
+        height: 300px;
+        background-color: white;
+        color: black;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .button1 {
+        padding: 8px 10px;
+        border: none;
+        margin-top: 4px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 20px;
+        align-content: center;
+        background-color: tomato;
+        border-radius: 3px 4px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .button2 {
+        padding: 8px 10px;
+        border: none;
+        margin-top: 4px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 20px;
+        align-content: center;
+        background-color: darkred;
+        border-radius: 3px 4px;
+        color: black;
+        cursor: pointer;
+    }
+
+    .btn-tomato {
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+        .btn-tomato :hover {
+            background-color: tomato;
+            border-color: tomato;
+        }
+
+    .btn-warning {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-bottom: 100px;
+    }
+
+        .btn-warning:hover {
+            background-color: tomato;
+            border-color: #d58512;
+        }
+</style>
+<center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Login</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdminUsername, "Enter Your UserName", htmlAttributes: new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdminUsername, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AdminUsername, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdminPassword, "Enter Your Password", htmlAttributes: new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdminPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AdminPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-tomato" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+    @Html.ActionLink("Back to Home", "Index", null, new { @class = "btn btn-warning" })
+
+</center>

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Confirmation";
+}
+
+<h2>@ViewBag.ConfirmationMessage</h2>
+
+<style>
+    body {
+        background-image: url('/Pictures/pexels-photo-1640773.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    center {
+        margin-top: 200px;
+    }
+
+    
+    .btn {
+        margin-right: 30px;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: tomato;
+        padding: 10px 13px 8px 10px;
+    }
+
+        .btn-primary:hover {
+            background-color: darkred;
+            border-color: darkred;
+        }
+
+</style>
+
+<center>
+
+    @Html.ActionLink("Shop More", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Go to Cart", "ShowCart", null, new { @class = "btn btn-primary" })
+
+</center>

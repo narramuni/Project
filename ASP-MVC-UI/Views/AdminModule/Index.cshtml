@@ -1,0 +1,43 @@
+﻿@model List<ASP_MVC_UI.Restaurant>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Restaurant List</h2>
+
+
+
+<div class="create">
+    @Html.ActionLink("Create New Restaurant", "Create", null, new { @class = "btn btn-success" })
+</div>
+
+
+<p style="color: red;">@TempData["Message"]</p>
+
+
+<div class="row">
+    @foreach (var restaurant in Model)
+    {
+        <section class="col-4" aria-labelledby="gettingStartedTitle" style="margin-bottom: 50px;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@restaurant.RestaurentLogoUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@restaurant.RestaurentName</h5>
+                    <p class="card-text">
+                        @Html.ActionLink("Show Food Items", "ShowFoodItems", "AdminModule", new { id = restaurant.RestaurentId }, new { @class = "btn btn-success" })
+                    </p>
+                    <p>Rating : ⭐⭐⭐⭐<p>
+                        <div>
+                            @Html.ActionLink("Details", "Details", new { id = restaurant.RestaurentId }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("EditRestaurant", "EditRestaurant", new { id = restaurant.RestaurentId }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "Delete", new { id = restaurant.RestaurentId }, new { @class = "btn btn-danger" })
+                        </div>
+
+
+                </div>
+            </div>
+        </section>
+    }
+</div>

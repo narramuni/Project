@@ -1,0 +1,94 @@
+﻿@model ASP_MVC_UI.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<style>
+
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .details-container {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        color: black;
+    }
+
+        .details-container:hover {
+            background-color: #f0f0f0;
+        }
+
+    h2 {
+        color: #333333;
+    }
+
+    .card {
+        border: 1px solid #4c88bf;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+    }
+
+    .card-title {
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: tomato;
+        border-color: tomato;
+    }
+
+        .btn-primary:hover {
+            border-color: tomato;
+        }
+</style>
+
+
+<div class="details-container">
+    <h2 class="text-center mb-4" style="color: tomato;">Details</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title" style="color: tomato;">Customer Information</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-3" style="color:black;">Customer FirstName</dt>
+                <dd class="col-sm-9" style="color:black;">:   @Model.CustFName</dd>
+
+                <dt class="col-sm-3" style="color:black;">Customer LastName</dt>
+                <dd class="col-sm-9" style="color:black;">:    @Model.CustLName</dd>
+
+                <dt class="col-sm-3" style="color:black;">Customer Phone</dt>
+                <dd class="col-sm-9" style="color:black;">:     @Model.CustPhone</dd>
+
+                <dt class="col-sm-3" style="color:black;">Customer Email</dt>
+                <dd class="col-sm-9" style="color:black;">:       @Model.CustEmail</dd>
+
+                <dt class="col-sm-3" style="color:black;">Customer Password</dt>
+                <dd class="col-sm-9" style="color:black;">:       @Model.CustPassword</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4">
+
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning" })
+    </div>
+</div>
+
+
+
+
+

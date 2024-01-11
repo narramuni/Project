@@ -1,0 +1,97 @@
+﻿@model ASP_MVC_UI.Models.OrderSuccessViewModel
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Order Success";
+}
+
+<h2>Your Order Was Successful..!</h2>
+<h5>Thankyou for ordering</h5>
+
+<style>
+
+    body {
+        background-image: url('/Pictures/OrderSuccess.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    h2, h5{
+        color: wheat;
+    }
+
+    .star {
+        font-size: 50px;
+        cursor: pointer;
+        color: white;
+        transition: color 0.3s;
+    }
+
+        .star.active {
+            color: gold;
+        }
+
+    .btn-primary {
+        background-color: wheat;
+        border-color: wheat;
+        color: black;
+    }
+
+        .btn-primary:hover {
+            background-color: wheat;
+            border-color: wheat;
+
+        }
+
+</style>
+
+<div id="rating-stars" data-customer-rating="@Model.CustomerRating">
+    @for (int i = 1; i <= 5; i++)
+    {
+        <span class="star" data-rating="@i">★</span>
+    }
+</div>
+
+<div class="text-right">
+    <button id="submit-rating-btn" class="btn btn-primary">Submit Rating</button>
+</div>
+
+<br />
+<br />
+<div class="text-right" style="color: tomato">
+    @Html.ActionLink("Go Home", "Index", "CustomerMenus", null, new { @class = "btn btn-primary" })
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var customerRating = parseInt($('#rating-stars').data('customer-rating'));
+
+        // Initialize star ratings based on the stored rating
+        $('.star:lt(' + customerRating + ')').addClass('active');
+
+        // Handle star click event
+        $('.star').on('click', function () {
+            var clickedStar = $(this);
+            var rating = clickedStar.data('rating');
+
+            // Update UI
+            $('.star').removeClass('active');
+            $('.star:lt(' + rating + ')').addClass('active');
+
+            // Update data-customer-rating attribute
+            $('#rating-stars').data('customer-rating', rating);
+        });
+
+        // Handle submit rating button click
+        $('#submit-rating-btn').on('click', function () {
+            var rating = $('#rating-stars').data('customer-rating');
+
+            // Call your controller action to submit the rating to the database
+            $.post('/CustomerMenus/SubmitRating', { rating: rating }, function () {
+                // Optionally, you can handle success or navigate to another page
+                alert('Rating submitted successfully!');
+            });
+        });
+    });
+</script>

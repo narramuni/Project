@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Food>
+
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Show Food Items";
+}
+<style>
+    .img-fluid {
+        max-width: 40%;
+        height: 70%;
+        margin-left: 200px;
+    }
+
+    .back{
+        color: tomato;
+    }
+</style>
+<h2 style="color:tomato;"> @ViewBag.Menu.RestaurentName</h2>
+
+
+
+
+    <div class="container">
+
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-fluid rounded mb-3 mb-md-0" src=@item.FoodImage alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3>@item.FoodName</h3>
+                    <h6>@item.FoodDescription</h6>
+                    <h3>Rs. @item.FoodUnitPrice </h3>
+                    @Html.ActionLink("Add to Cart", "AddToCart", new { foodId = item.FoodId }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <hr>
+        }
+    </div>
+
+    <div class="back">
+        @Html.ActionLink("Back", "Index")
+    </div>

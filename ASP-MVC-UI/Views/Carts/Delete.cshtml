@@ -1,0 +1,124 @@
+﻿@model ASP_MVC_UI.Cart
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2>Deleting the item from your cart</h2>
+
+<h3>Are you sure you want to delete this item?</h3>
+
+
+    <hr />
+
+    <style>
+
+        h2, h3 {
+            margin-left: 400px;
+            color: tomato;
+        }
+
+        body {
+            background-image: url('/Pictures/ShopMoreOrGoToCartBgImg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .button {
+            color: tomato;
+        }
+
+         .dl-horizontal {
+            font-size: 15px;
+            align-content: center;
+            width: 600px;
+            height: 550px;
+            background-color: lemonchiffon;
+            color:Black;
+            box-sizing: border-box;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .delete {
+            padding: 7px 13px 8px 10px;
+            background-color: tomato;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+    </style>
+
+    <center>
+        
+        <div>
+
+            <dl class="dl-horizontal">
+
+                <hr />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Food.FoodName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Food.FoodName)
+                </dd>
+
+                <br />
+                <hr />
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CartFoodQty)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CartFoodQty)
+                </dd>
+
+                <br />
+                <hr />
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CartFoodPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CartFoodPrice)
+                </dd>
+
+                <br />
+                <hr />
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CartFoodImage)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CartFoodImage)
+                </dd>
+
+                <br />
+                <hr />
+
+
+
+
+            </dl>
+
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a href="@Url.Action("ShowCart", "CustomerMenus")" class="btn btn-success">Back to Cart</a>
+                </div>
+
+
+            }
+
+</center>

@@ -1,0 +1,98 @@
+﻿@model ASP_MVC_UI.Food
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('/Pictures/AdminLoginBgImg1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .center-box {
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #3498db;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        background-color: #ecf0f1;
+        margin-top: 20px; /* Add margin top to separate from the top navigation */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-default {
+        background-color: tomato;
+        border-color: tomato;
+        color: white;
+    }
+
+    h4.text-center {
+        color: Tomato;
+        font-weight: bold;
+    }
+
+    .text-danger {
+        color: tomato;
+    }
+</style>
+
+<center>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="center-box">
+            <h4 class="text-center">Edit Food</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.FoodId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FoodName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FoodName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodUnitPrice, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FoodUnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FoodUnitPrice, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodDescription, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FoodDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FoodDescription, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodImage, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.FoodImage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FoodImage, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodRestaurentId, "FoodRestaurentId", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.FoodRestaurentId, (IEnumerable<SelectListItem>)ViewBag.Restaurants, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FoodRestaurentId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <button class="save" type="submit">Save</button>
+            </div>
+        </div>
+    }
+</center>
+
+<div class="back">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>

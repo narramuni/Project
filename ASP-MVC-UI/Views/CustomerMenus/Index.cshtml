@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Restaurant>
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Restaurents</h2>
+
+<!--<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurentName)
+        </th>
+        <th>-->
+@*  *@
+<!--@Html.DisplayNameFor(model => model.RestaurentAvailable)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.RestaurentLogoUrl)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.RestaurentAdminId)
+</th>
+<th>-->
+<!-- Add other columns as needed -->
+<!--</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurentAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurentLogoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurentAdminId)
+            </td>
+            <td>
+                @Html.ActionLink("Show Food Items", "ShowFoodItems", new { id = item.RestaurentId })
+            </td>
+        </tr>
+    }
+</table>-->
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        int i = 0;
+        <section class="col-4" aria-labelledby="gettingStartedTitle" style="margin-bottom:50px; ">
+            <div class="card" style="width: 18rem;">
+
+                <img class="card-img-top" src=@item.RestaurentLogoUrl alt="Card image cap">
+
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.RestaurentName</h5>
+                    <p class="card-text">
+                        @Html.ActionLink("Show Food Items", "ShowFoodItems", new { id = item.RestaurentId }, new { @class = "btn btn-primary" })
+                    </p>
+                    <p>Rating : ⭐⭐⭐⭐<p>
+                </div>
+            </div>
+        </section>
+    }
+
+</div>
